@@ -151,3 +151,117 @@ footer {
     vertical-align: middle;
     fill: currentColor;
 }
+
+
+/* kode-mono-latin-wght-normal */
+@font-face {
+  font-family: "Kode Mono Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400 700;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/kode-mono:vf@latest/latin-wght-normal.woff2)
+    format("woff2-variations");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --body-color: #010c15;
+  --color-1: #26d0ce;
+  --color-2: #d22222;
+  --color-3: #c98bdf;
+  --color-4: #e6089b;
+  --color-5: #00ff99;
+  --color-6: #006aff;
+  --color-7: #ff0095;
+
+  --border-colors: transparent 60%, var(--color-1);
+
+  color-scheme: dark;
+}
+
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  place-content: center;
+  background-color: var(--body-color);
+  font-family: "Kode Mono Variable", monospace;
+}
+
+main.container {
+  width: 100%;
+  min-height: 100vh;
+
+  gap: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.card {
+  --size: 300px;
+  --radius: 0.75rem;
+
+  margin: 0 auto;
+  padding: 2rem;
+  width: var(--size);
+  background: #1c1f2b;
+  text-align: center;
+  position: relative;
+  border-radius: var(--radius);
+
+  &::before,
+  &::after {
+    content: "";
+
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    translate: -50% -50%;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+
+    padding: 0.25rem;
+    border-radius: var(--radius);
+    background-image: conic-gradient(from var(--angle), var(--border-colors));
+  }
+
+  &::before {
+    opacity: 0.5;
+    filter: blur(1.5rem);
+  }
+
+  &.animated {
+    &::before,
+    &::after {
+      animation: spin 3s linear infinite;
+    }
+  }
+}
+
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
