@@ -1,321 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Webpage</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Your Name</h1>
+        <nav>
+            <a href="#" onclick="showSection('home')">
+                <span class="icon"><i class="fas fa-home"></i></span>Home
+                <div class="dropdown">
+                    <a href="#">Welcome Message</a>
+                    <a href="#">Introduction</a>
+                    <a href="#">Latest Updates</a>
+                </div>
+            </a>
+            <a href="#" onclick="showSection('about')">
+                <span class="icon"><i class="fas fa-user"></i></span>About Me
+                <div class="dropdown">
+                    <a href="#">Biography</a>
+                    <a href="#">Background</a>
+                    <a href="#">Personal Interests</a>
+                </div>
+            </a>
+            <a href="#" onclick="showSection('projects')">
+                <span class="icon"><i class="fas fa-briefcase"></i></span>Projects
+                <div class="dropdown">
+                    <a href="#">Project 1</a>
+                    <a href="#">Project 2</a>
+                    <a href="#">Upcoming Projects</a>
+                </div>
+            </a>
+            <a href="#" onclick="showSection('skills')">
+                <span class="icon"><i class="fas fa-code"></i></span>Skills
+                <div class="dropdown">
+                    <a href="#">Programming Languages</a>
+                    <a href="#">Technologies</a>
+                    <a href="#">Certifications</a>
+                </div>
+            </a>
+            <a href="#" onclick="showSection('contact')">
+                <span class="icon"><i class="fas fa-envelope"></i></span>Contact
+                <div class="dropdown">
+                    <a href="#">Email</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">GitHub</a>
+                    <a href="#">Twitter</a>
+                </div>
+            </a>
+        </nav>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+        </div>
+    </header>
 
- <!DOCTYPE html>
-<html lang="en-US">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Experienced Fullstack Web Developer | High-Quality Web Solutions</title>
-        <meta name="description" content="With 10 years in the field, I specialize in creating tailored, high-performance websites. Dive into my portfolio to see how cutting-edge web development meets innovative design.">
-        <meta property="og:url" content="https://thesigner.dev">
-        <meta property="og:type" content="website">
-        <meta property="og:title" content="Thesigner - freelance web developer and designer">
-        <meta property="og:image" content="og.19372bf8.png">
-        <meta property="og:description" content="8 years of experience with websites, e-commerce, mobile & web applications and brand identity.">
-        <meta property="og:site_name" content="thesigner.dev">
-        <meta property="og:locale" content="en-US">
-        <meta name="twitter:card" content="summary">
-        <meta property="twitter:image" content="assets/img/og.png">
-        <meta property="twitter:title" content="Thesigner - freelance web developer and designer">
-        <meta property="twitter:description" content="8 years of experience with websites, e-commerce, mobile & web applications and brand identity.">
-        <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.da908268.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.40cc04e5.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.d4a1b4ff.png">
-        <link rel="manifest" href="site.0557d19a.webmanifest">
-        <link rel="mask-icon" href="safari-pinned-tab.bda0fa23.svg" color="#5bbad5">
-        <link rel="shortcut icon" href="favicon.d3a3bf3b.ico">
-        <meta name="msapplication-TileColor" content="#ffc40d">
-        <meta name="msapplication-config" content="assets/img/favicons/browserconfig.xml">
-        <meta name="theme-color" content="#200e29">
-        <link rel="canonical" href="https://thesigner.dev">
-        <link rel="stylesheet" href="_app.22f0f8d7.css">
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63583741-1"></script>
-        <script>
-            function gtag() {
-                dataLayer.push(arguments)
-            }
-            window.dataLayer = window.dataLayer || [],
-            gtag("js", new Date),
-            gtag("config", "UA-63583741-1", {
-                anonymize_ip: !0
-            });
-        </script>
-    </head>
-    <body>
-        <header class="header">
-            <button class="logo" aria-label="Logo - Home" onclick="document.documentElement.scrollTop=0">
-                <svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400" height="614.1872719902716" viewbox="0, 0, 400,614.1872719902716">
-                    <g id="svgg">
-                        <path id="path0" d="M234.613 27.856 C 209.329 40.938,149.918 71.669,102.590 96.146 L 16.538 140.651 16.543 230.236 L 16.547 319.822 63.674 342.084 L 110.900 364.345 111.242 363.891 C 113.127 361.952,376.312 48.242,376.135 48.145 C 375.435 47.762,280.834 4.055,280.721 4.062 C 280.646 4.067,259.897 14.774,234.613 27.856 M321.464 30.207 C 343.146 40.241,361.076 48.549,361.308 48.671 C 361.716 48.884,313.662 74.061,169.539 149.146 L 166.627 150.663 167.505 149.605 C 167.988 149.023,193.883 117.791,225.051 80.201 C 256.218 42.612,281.792 11.881,281.881 11.911 C 281.970 11.941,299.783 20.174,321.464 30.207 M264.026 22.740 C 262.010 25.170,235.817 56.747,205.821 92.910 L 151.282 158.662 130.650 169.427 C 119.303 175.348,109.944 180.191,109.853 180.190 C 109.467 180.185,27.591 142.592,27.709 142.473 C 27.818 142.365,267.532 18.335,267.653 18.325 C 267.675 18.323,266.043 20.310,264.026 22.740 M358.534 59.060 C 357.828 59.884,302.543 125.715,235.677 205.351 C 168.811 284.986,113.930 350.323,113.719 350.544 L 113.336 350.945 113.336 282.926 L 113.336 214.908 134.455 189.443 L 155.574 163.978 257.560 110.773 C 313.652 81.511,359.607 57.567,359.682 57.564 C 359.756 57.562,359.240 58.235,358.534 59.060 M63.449 166.376 C 85.492 176.465,104.238 185.048,105.107 185.451 L 106.688 186.184 106.688 199.303 L 106.688 212.422 65.321 262.312 C 42.569 289.751,23.781 312.382,23.570 312.603 L 23.186 313.004 23.186 230.519 C 23.186 185.152,23.228 148.034,23.279 148.034 C 23.330 148.034,41.406 156.288,63.449 166.376 M139.984 172.233 C 139.849 172.451,113.931 203.736,113.559 204.130 C 113.366 204.334,113.339 203.034,113.375 195.166 L 113.417 185.963 126.713 179.011 C 141.681 171.185,140.147 171.968,139.984 172.233 M106.626 354.879 C 106.522 354.983,28.168 317.888,28.165 317.734 C 28.164 317.656,45.813 296.313,67.385 270.306 L 106.607 223.020 106.648 288.918 C 106.670 325.162,106.660 354.845,106.626 354.879 M149.243 405.516 C 76.300 492.376,16.619 563.518,16.619 563.610 C 16.619 563.807,111.846 607.898,112.125 607.830 C 112.231 607.804,171.718 577.065,244.319 539.522 L 376.320 471.261 376.283 381.695 L 376.246 292.129 329.145 269.863 C 303.239 257.616,282.003 247.595,281.955 247.592 C 281.907 247.590,222.187 318.656,149.243 405.516 M325.713 275.638 C 347.129 285.760,364.651 294.096,364.652 294.164 C 364.653 294.256,287.025 387.967,286.321 388.723 C 286.238 388.812,286.178 361.158,286.178 322.940 C 286.178 258.931,286.186 257.006,286.476 257.119 C 286.641 257.183,304.297 265.517,325.713 275.638 M258.359 422.432 L 237.188 447.956 135.903 500.779 C 80.196 529.832,34.216 553.826,33.725 554.099 L 32.833 554.595 33.239 554.086 C 33.462 553.806,88.950 487.723,156.546 407.235 L 279.449 260.894 279.489 328.901 L 279.530 396.908 258.359 422.432 M369.640 422.653 L 369.599 463.979 327.929 444.901 L 286.259 425.824 286.217 412.610 L 286.176 399.397 327.887 349.110 L 369.599 298.823 369.640 340.075 C 369.662 362.764,369.662 399.924,369.640 422.653 M279.530 416.666 L 279.530 425.873 267.815 431.981 C 261.372 435.340,255.299 438.507,254.319 439.019 L 252.537 439.951 253.427 438.878 C 253.916 438.288,259.972 430.980,266.883 422.639 C 273.794 414.298,279.467 407.470,279.489 407.466 C 279.512 407.462,279.530 411.602,279.530 416.666 M324.093 450.497 C 346.669 460.836,365.140 469.339,365.140 469.391 C 365.140 469.460,213.678 547.856,128.523 591.863 C 125.907 593.215,125.200 593.523,125.435 593.207 C 125.603 592.983,151.787 561.400,183.623 523.024 L 241.506 453.249 262.180 442.450 C 273.550 436.510,282.897 431.661,282.950 431.674 C 283.003 431.688,301.517 440.158,324.093 450.497 M168.449 530.825 C 136.860 568.909,110.971 600.046,110.918 600.019 C 110.866 599.992,92.854 591.661,70.892 581.505 L 30.960 563.040 32.302 562.361 C 33.040 561.988,76.871 539.133,129.704 511.572 C 182.538 484.012,225.792 461.490,225.825 461.523 C 225.858 461.555,200.039 492.742,168.449 530.825 " stroke="none" fill="#fff" fill-rule="evenodd"></path>
-                    </g>
-                </svg>
-            </button>
-        </header>
-        <main class="main">
-            <section class="intro screen" id="intro" data-callback="intro">
-                <span data-action="intro"></span>
-                <header class="screen__container">
-                    <div class="intro__container giant stroke">
-                        <h2 class="row">
-                            <span class="cell">
-                                <span>t</span>
-                            </span>
-                            <span class="cell">
-                                <span>h</span>
-                            </span>
-                            <span class="cell">
-                                <span>e</span>
-                            </span>
-                            <span class="cell">
-                                <span>s</span>
-                            </span>
-                            <span class="cell">
-                                <span>i</span>
-                            </span>
-                            <span class="cell">
-                                <span>g</span>
-                            </span>
-                            <span class="cell">
-                                <span>n</span>
-                            </span>
-                            <span class="cell">
-                                <span>e</span>
-                            </span>
-                            <span class="cell">
-                                <span>r</span>
-                            </span>
-                        </h2>
-                    </div>
-                    <h1 class="freelancer">
-                        <span data-action="intro-blob"></span>
-                        <span class="cell">FULLSTACK WEB DEVELOPER </span>
-                    </h1>
-                </header>
-            </section>
-            <section class="about screen" id="about" data-callback="about">
-                <header class="screen__container">
-                    <div data-action="about-blob">
-                        <h2>FULLSTACK WEB DEVELOPER</h2>
-                    </div>
-                    <div class="text text--visible">
-                        <div class="rev">
-                            <h2 class="med text-animated d2">
-                                I do websites, e-commerce,<br>
-                                mobile & web applications,<br>print design & brand identity. 
-                            </h2>
-                            <h3 class="big text-animated d1">
-                                I'm the guy that makes<br>
-                                people <span class="stroke">digg your brand.</span>
-                            </h3>
-                        </div>
-                        <button data-click="aboutMore" href="#" class="button text-animated d3">
-                            <span class="button__text active" data-hover="button">Cool, why me?</span>
-                            <div data-action="about-triangle"></div>
-                        </button>
-                    </div>
-                    <div class="text text--clip center text--invisible">
-                        <div class="scroll-area">
-                            <div data-splitting="">
-                                <h2 class="text__node bold">Hi, I'm a fullstack web developer with 10 years of deep-rooted experience. </h2>
-                                <p class="text__node">During my tenure as a lead programmer at a prominent creative agency, I sharpened my skills in both web and mobile development, as well as UX design. </p>
-                                <p class="text__node">I've helmed projects for notable brands like NovoNordisk, Jerónimo Martins, Citroen, and others, ensuring top-tier quality and functionality. </p>
-                                <p class="text__node">Seeking someone to craft or revamp your website? Look no further. I pride myself on creating tailored, visually compelling sites optimized for performance across all devices. </p>
-                                <p class="text__node">Whether you're launching a new venture or elevating an established brand, I deliver results that surpass expectations. My approach goes beyond templates, ensuring unique, stand-out products. </p>
-                                <p class="text__node">
-                                    Still pondering? Take a peek at my <a class="stroke bold" href="#work">portfolio</a>
-                                    . If you're intrigued, <a class="stroke bold" href="#contact">let's chat</a>
-                                    . 
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </header>
-            </section>
-            <section class="work screen" id="work" data-callback="work">
-                <div class="work__title">
-                    <div class="work__title__container">
-                        <h3 class="row-small giant">
-                            <span class="cell text-animated d1 stroke">W</span>
-                            <span class="cell text-animated d2 stroke">o</span>
-                            <span class="cell text-animated d3 stroke">r</span>
-                            <span class="cell text-animated d4 stroke">k</span>
-                        </h3>
-                        <span data-action="work-triangle"></span>
-                    </div>
-                </div>
-                <div class="screen__container screen__container--scroll">
-                    <div class="work__float">
-                        <div class="work__float__desc">
-                            <h2 class="next">freelance web developer websites</h2>
-                        </div>
-                        <div data-action="work"></div>
-                    </div>
-                    <div class="work__items stroke">
-                        <div class="work__items__row">
-                            <a class="work__item link" href="https://pracawbiedronce.pl/" data-agency="for: thesigner" target="_blank" rel="noopener">
-                                <h6 data-work="">Website: Frontend • Backend</h6>
-                                <h4 class="work__item__title">Jerónimo Martins</h4>
-                                <p data-text="">Jerónimo Martins SGPS, S.A. is a company from Portugal that has ownership of several enterprises, one of which is the Biedronka shopping chain.</p>
-                                <img loading="lazy" class="work__item__image" src="biedronka.dd130451.jpg" alt="Unique Club Sopot website project image" title="Unique Club Sopot website project image">
-                            </a>
-                            <a class="work__item link" href="http://feel-fit.pl/" data-agency="for: websitestyle" target="_blank" rel="noopener">
-                                <h6 data-work="">Website: Frontend • Backend</h6>
-                                <h4 class="work__item__title">FeelFit</h4>
-                                <p data-text="">Feel-fit is a producer of sugar-free sweets, meals and protein products.</p>
-                                <img loading="lazy" class="work__item__image" src="feelfit.6bedb42e.jpg" alt="Feel fit project image" title="Feel fit project image">
-                            </a>
-                            <a class="work__item link" data-agency="for: websitestyle" href="https://www.larive-parfums.com/" target="_blank" rel="noopener">
-                                <h6 data-work="">Website: Frontend • Backend</h6>
-                                <h4 class="work__item__title">Larive Parfums</h4>
-                                <p data-text="">LA RIVE is one of the leading perfume manufacturers in Poland.</p>
-                                <img loading="lazy" class="work__item__image" src="larive.fd608d6c.jpg" alt="Larive project image" title="Larive project image">
-                            </a>
-                            <a class="work__item link" href="https://auto-planeta.pl/" target="_blank" rel="noopener" data-agency="for: websitestyle">
-                                <h6 data-work="">Website / e-commerce: Frontend • Backend • Configurator • Integrations</h6>
-                                <h4 class="work__item__title">Auto Planeta</h4>
-                                <p data-text="">Car leasing</p>
-                                <img loading="lazy" class="work__item__image" src="autoplaneta.049f7f26.jpeg" alt="Auto Planeta website e-commerce project image" title="Auto Planeta website e-commerce project image">
-                            </a>
-                            <a class="work__item link" href="https://manalay.com/" data-agency="for: websitestyle" target="_blank" rel="noopener">
-                                <h6 data-work="">Website: Frontend • Backend</h6>
-                                <h4 class="work__item__title">Manalay</h4>
-                                <p data-text="">Manalay creates unique expeditions for people for whom travel is a passion.</p>
-                                <img loading="lazy" class="work__item__image" src="manalay2.b97637b9.jpg" alt="Manalay project image" title="Manalay project image">
-                            </a>
-                            <a class="work__item link" href="https://cosmetin.pl/" target="_blank" rel="noopener" data-agency="for: websitestyle">
-                                <h6 data-work="">Website / e-commerce: Frontend • Backend</h6>
-                                <h4 class="work__item__title">Cosmetin</h4>
-                                <p data-text="">Cosmetin is an online shop with natural and ecological cosmetics.</p>
-                                <img loading="lazy" class="work__item__image" src="cosmetin.bf2a606e.jpg" alt="Cosmetin website e-commerce project image" title="Cosmetin website e-commerce project image">
-                            </a>
-                            <a class="work__item link" href="https://gtg.com.pl/" target="_blank" rel="noopener" data-agency="for: websitestyle">
-                                <h6 data-work="">E-commerce: Frontend • Backend • Integrations</h6>
-                                <h4 class="work__item__title">GTG</h4>
-                                <p data-text="">Discover Ginger's Tactical Gear – Your one-stop shop for high-quality tactical equipment, survival gear, and outdoor essentials. </p>
-                                <img loading="lazy" class="work__item__image" src="gtg.7d711313.jpg" alt="VanillaClub website project image" title="VanillaClub website project image">
-                            </a>
-                            <a class="work__item link" href="https://openvoicestudio.pl/" target="_blank" rel="noopener" data-agency="for: thesigner">
-                                <h6 data-work="">Website / e-commerce: Frontend • Backend</h6>
-                                <h4 class="work__item__title">Open Voice Studio</h4>
-                                <p data-text="">The only place where they will take care of your voice in a comprehensive way.</p>
-                                <img loading="lazy" class="work__item__image" src="openvoice.34c46926.jpg" alt="OpenVoice website e-commerce project image" title="OpenVoice website e-commerce project image">
-                            </a>
-                            <a class="work__item link" data-agency="for: websitestyle" href="https://citroen.jdkulej.pl/" target="_blank" rel="noopener">
-                                <h6 data-work="">Website: Frontend • Backend</h6>
-                                <h4 class="work__item__title">Citroen JD Kulej</h4>
-                                <p data-text="">JD Kulej is an authorized dealer and service technician for Citroen.</p>
-                                <img loading="lazy" class="work__item__image" src="citroen.6e4794b9.jpg" alt="Citroen jdkulej project image" title="Citroen jdkulej project image">
-                            </a>
-                            <a class="work__item link" href="https://flowmusicclub.pl/" data-agency="for: thesigner" target="_blank" rel="noopener">
-                                <h6 data-work="">Website: Frontend • Backend</h6>
-                                <h4 class="work__item__title">Flow Music Club</h4>
-                                <p data-text="">Flow Music Club is a prestigious night club located in Sopot.</p>
-                                <img loading="lazy" class="work__item__image" src="flow.4efc9099.jpg" alt="Unique Club Sopot website project image" title="Unique Club Sopot website project image">
-                            </a>
-                            <a class="work__item link" href="http://litus-invest.pl/" target="_blank" rel="noopener" data-agency="for: comup">
-                                <h6 data-work="">Website: Frontend</h6>
-                                <h4 class="work__item__title">Litus Invest</h4>
-                                <p data-text="">Precision and reliability - leading company in the construction market.</p>
-                                <img loading="lazy" class="work__item__image" src="litus.4c88355f.jpg" alt="VanillaClub website project image" title="VanillaClub website project image">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="contact screen" id="contact" data-callback="contact">
-                <div class="screen__container">
-                    <div class="contact__content">
-                        <span class="text-switch">
-                            <div class="text-switch__items">
-                                <span class="text-switch__item-">
-                                    Let's shine some<br>
-                                    light on <span class="stroke">your brand</span>
-                                </span>
-                                <span class="text-switch__item">
-                                    Let's create<br>
-                                    <span class="stroke">something awesome</span>
-                                </span>
-                                <span class="text-switch__item">
-                                    Let's make people<br>
-                                    <span class="stroke">see you</span>
-                                </span>
-                                <span class="text-switch__item">
-                                    Let's make people<br>
-                                    <span class="stroke">buy your stuff</span>
-                                </span>
-                                <span class="text-switch__item">
-                                    Let's make people<br>
-                                    <span class="stroke">remember you</span>
-                                </span>
-                                <span class="text-switch__item--">
-                                    Want to see<br>
-                                    <span class="stroke scale cat__wrapper">
-                                        my cat? <video autoplay loop muted src="cat.a72b9954.mp4" class="cat"></video>
-                                    </span>
-                                </span>
-                            </div>
-                        </span>
-                        <div class="contact__contact">
-                            <a href="mailto:info@thesigner.pl" class="button text-animated d2">
-                                <span class="button__text monkey" data-hover="button">
-                                    info 
-                                    <span class="monkey__wrapper">
-                                        <span class="m0">@</span>
-                                        <span class="m1">🙉</span>
-                                        <span class="m2">@</span>
-                                    </span>
-                                    thesigner.pl
-                                </span>
-                                <span data-action="contact-email"></span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <script id="vs" type="x-shader/x-vertex">
-                    
-					uniform sampler2D map;
-					uniform float width;
-					uniform float height;
-					uniform float nearClipping, farClipping;
-					uniform float pointSize;
-					uniform float zOffset;
-					varying vec2 vUv;
-					const float XtoZ = 1.11146; // tan( 1.0144686 / 2.0 ) * 2.0;
-					const float YtoZ = 0.83359; // tan( 0.7898090 / 2.0 ) * 2.0;
-					void main() {
-						vUv = vec2( position.x / width, position.y / height );
-						vec4 color = texture2D( map, vUv );
-						float depth = ( color.r + color.g + color.b ) / 3.0;
-						// Projection code by @kcmic
-						float z = ( 1.0 - depth ) * (farClipping - nearClipping) + nearClipping;
-						vec4 pos = vec4(
-							( position.x / width - 0.5 ) * z * XtoZ,
-							( position.y / height - 0.5 ) * z * YtoZ,
-							- z + zOffset,
-							1.0);
-						gl_PointSize = pointSize;
-						gl_Position = projectionMatrix * modelViewMatrix * pos;
-					}
-				
-                </script>
-                <script id="fs" type="x-shader/x-fragment">
-                    
-					uniform sampler2D map;
-					varying vec2 vUv;
-					void main() {
-						vec4 color = texture2D( map, vUv );
-						gl_FragColor = vec4( color.r, color.g, color.b, 0.2 );
-					}
-				
-                </script>
-            </section>
-        </main>
-        <footer class="footer">
-            <a class="footer__author" href="https://thesigner.dev" target="_blank" rel="noopener">© 2022 thesigner.dev</a>
-            <div class="social">
-                <a class="social__item" href="https://www.linkedin.com/in/the-thesigner/" target="_blank" rel="noopener">In</a>
-                <a class="social__item" href="https://github.com/thesign3r" target="_blank" rel="noopener">Gh</a>
-            </div>
-        </footer>
-        <script src="_app.0f0cb3b9.js"></script>
-    </body>
+    <section id="home" class="active">
+        <h2>Home</h2>
+        <p>Welcome to my personal webpage! Here you'll find information about my projects, skills, and how to get in touch with me.</p>
+        <p>I am a software engineer and student. I enjoy reading novels, playing soccer, and exploring new technologies.</p>
+        <p>Some of my favorite activities include:</p>
+        <ul>
+            <li>Reading Science Fiction novels</li>
+            <li>Playing soccer with friends</li>
+            <li>Exploring new programming languages</li>
+            <li>Traveling and experiencing new cultures</li>
+        </ul>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I am a software engineer and student with a passion for exploring the field of technology. Here, you'll find information about my projects, skills, and how to get in touch with me.</p>
+        <p>My journey in the tech world started when I was a teenager, and I have been passionate about it ever since. I love solving complex problems and creating innovative solutions.</p>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project">
+            <h3>Project 1</h3>
+            <p>Description of your project. Highlight what you did, technologies used, and the outcome.</p>
+        </div>
+        <div class="project">
+            <h3>Project 2</h3>
+            <p>Description of your project. Highlight what you did, technologies used, and the outcome.</p>
+        </div>
+        <!-- Add more projects as needed -->
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skill">
+            <h3>Programming Languages</h3>
+            <p>List of programming languages you are proficient in (e.g., JavaScript, Python, Java).</p>
+        </div>
+        <div class="skill">
+            <h3>Technologies & Frameworks</h3>
+            <p>List of technologies and frameworks you are familiar with (e.g., React, Node.js, Django).</p>
+        </div>
+        <!-- Add more skills as needed -->
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Feel free to reach out to me through the following platforms:</p>
+        <div class="contact-info">
+            <p>Email: <a href="mailto:your.email@example.com"><span class="icon"><i class="fas fa-envelope"></i></span>your.email@example.com</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/yourprofile" target="_blank"><span class="icon"><i class="fab fa-linkedin"></i></span>Your LinkedIn</a></p>
+            <p>GitHub: <a href="https://github.com/yourusername" target="_blank"><span class="icon"><i class="fab fa-github"></i></span>Your GitHub</a></p>
+            <p>Twitter: <a href="https://twitter.com/yourusername" target="_blank"><span class="icon"><i class="fab fa-twitter"></i></span>@yourusername</a></p>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2024 Your Name. All rights reserved.
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>
