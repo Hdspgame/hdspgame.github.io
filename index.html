@@ -10,44 +10,58 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
         }
 
         body {
-            background-color: #f7f7f7;
-            color: #333;
+            font-family: 'Arial', sans-serif;
+            background-color: #0d0d0d;
+            color: #e0e0e0;
             line-height: 1.6;
         }
 
         header {
-            background-color: #222;
-            color: #fff;
-            padding: 2rem 1rem;
             text-align: center;
+            padding: 4rem 1rem;
+            background-color: #1a1a1a;
+            border-bottom: 1px solid #333;
         }
 
         header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #e0e0e0;
         }
 
         header p {
             font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header a {
+            color: #e63946;
+            text-decoration: none;
+        }
+
+        header a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 1rem;
         }
 
         section {
-            padding: 2rem 1rem;
-            margin: 1rem auto;
-            max-width: 800px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
         }
 
         section h2 {
             font-size: 2rem;
             margin-bottom: 1rem;
-            color: #444;
+            color: #e63946;
+            border-bottom: 1px solid #444;
+            padding-bottom: 0.5rem;
         }
 
         ul {
@@ -57,22 +71,34 @@
 
         ul li {
             margin-bottom: 0.8rem;
+            padding: 0.5rem;
+            background: #1a1a1a;
+            border-radius: 8px;
+        }
+
+        ul li strong {
+            color: #e63946;
+        }
+
+        p, li {
+            font-size: 1rem;
+            color: #c0c0c0;
         }
 
         footer {
             text-align: center;
-            padding: 1rem;
-            background-color: #222;
-            color: #fff;
-            margin-top: 2rem;
+            padding: 2rem 1rem;
+            background-color: #1a1a1a;
+            border-top: 1px solid #333;
+            color: #c0c0c0;
         }
 
-        a {
-            color: #1e90ff;
+        footer a {
+            color: #e63946;
             text-decoration: none;
         }
 
-        a:hover {
+        footer a:hover {
             text-decoration: underline;
         }
     </style>
@@ -84,49 +110,51 @@
         <p>Email: <a href="mailto:hdspgame@gmail.com">hdspgame@gmail.com</a> | Phone: +91 9039133202</p>
     </header>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Inventive Senior Software Developer with 3 years and 7 months of experience designing and deploying Java microservices using Spring Boot. Known for developing scalable high-performance applications to enhance user experience and operational efficiency.</p>
-    </section>
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Inventive Senior Software Developer with 3 years and 7 months of experience designing and deploying Java microservices using Spring Boot. Known for developing scalable high-performance applications to enhance user experience and operational efficiency.</p>
+        </section>
 
-    <section id="experience">
-        <h2>Work Experience</h2>
-        <ul>
-            <li>
-                <strong>Software Engineer II</strong>, Bajaj Finserv Direct Limited (08/2022 - Present)<br>
-                Resolved Jira tickets, developed REST endpoints, and onboarded partners with complete end-to-end flows.
-            </li>
-            <li>
-                <strong>Programmer Analyst</strong>, Cognizant Technology (12/2020 - 08/2022)<br>
-                Created REST endpoints and performed comprehensive bug fixes using Java.
-            </li>
-        </ul>
-    </section>
+        <section id="experience">
+            <h2>Work Experience</h2>
+            <ul>
+                <li>
+                    <strong>Software Engineer II</strong>, Bajaj Finserv Direct Limited (08/2022 - Present)<br>
+                    Resolved Jira tickets, developed REST endpoints, and onboarded partners with complete end-to-end flows.
+                </li>
+                <li>
+                    <strong>Programmer Analyst</strong>, Cognizant Technology (12/2020 - 08/2022)<br>
+                    Created REST endpoints and performed comprehensive bug fixes using Java.
+                </li>
+            </ul>
+        </section>
 
-    <section id="education">
-        <h2>Education</h2>
-        <p><strong>Bachelor of Engineering</strong>, Mahakal Institute of Technology (06/2016 - 07/2020)<br>
-        Major: Computer Science and Engineering</p>
-    </section>
+        <section id="education">
+            <h2>Education</h2>
+            <p><strong>Bachelor of Engineering</strong>, Mahakal Institute of Technology (06/2016 - 07/2020)<br>
+            Major: Computer Science and Engineering</p>
+        </section>
 
-    <section id="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>Spring Boot, Java (1.8), REST APIs, Camunda, Microservices</li>
-            <li>Frontend: HTML, CSS, JavaScript</li>
-            <li>Database: MongoDB, PostgresDB</li>
-            <li>Tools: JIRA, Mac OS, Windows</li>
-        </ul>
-    </section>
+        <section id="skills">
+            <h2>Skills</h2>
+            <ul>
+                <li>Spring Boot, Java (1.8), REST APIs, Camunda, Microservices</li>
+                <li>Frontend: HTML, CSS, JavaScript</li>
+                <li>Database: MongoDB, PostgresDB</li>
+                <li>Tools: JIRA, Mac OS, Windows</li>
+            </ul>
+        </section>
 
-    <section id="projects">
-        <h2>Personal Projects</h2>
-        <p><strong>Hybrid Development Environment (HDE)</strong> (06/2017 - 12/2018)</p>
-        <p>A development environment to compile and run C, C++, and Java programs with features for teachers to check students' work in labs. Built using Java Swing, AWT, and Java Server technologies.</p>
-    </section>
+        <section id="projects">
+            <h2>Personal Projects</h2>
+            <p><strong>Hybrid Development Environment (HDE)</strong> (06/2017 - 12/2018)</p>
+            <p>A development environment to compile and run C, C++, and Java programs with features for teachers to check students' work in labs. Built using Java Swing, AWT, and Java Server technologies.</p>
+        </section>
+    </div>
 
     <footer>
-        <p>&copy; 2024 Harshdeep Singh Parihar</p>
+        <p>&copy; 2024 Harshdeep Singh Parihar | <a href="#">Back to top</a></p>
     </footer>
 </body>
 </html>
