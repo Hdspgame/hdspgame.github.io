@@ -3,125 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Webpage</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Harshdeep Singh Parihar - Portfolio</title>
+    <style>
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f7f7f7;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #222;
+            color: #fff;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+        }
+
+        section {
+            padding: 2rem 1rem;
+            margin: 1rem auto;
+            max-width: 800px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #444;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #222;
+            color: #fff;
+            margin-top: 2rem;
+        }
+
+        a {
+            color: #1e90ff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-  <div class="card animated">
     <header>
         <h1>Harshdeep Singh Parihar</h1>
-        <nav>
-            <a href="#" onclick="showSection('home')">
-                <span class="icon"><i class="fas fa-home"></i></span>Home
-                <div class="dropdown">
-                    <a href="#">Welcome Message</a>
-                    <a href="#">Introduction</a>
-                    <a href="#">Latest Updates</a>
-                </div>
-            </a>
-            <a href="#" onclick="showSection('about')">
-                <span class="icon"><i class="fas fa-user"></i></span>About Me
-                <div class="dropdown">
-                    <a href="#">Biography</a>
-                    <a href="#">Background</a>
-                    <a href="#">Personal Interests</a>
-                </div>
-            </a>
-            <a href="#" onclick="showSection('projects')">
-                <span class="icon"><i class="fas fa-briefcase"></i></span>Projects
-                <div class="dropdown">
-                    <a href="#">Project 1</a>
-                    <a href="#">Project 2</a>
-                    <a href="#">Upcoming Projects</a>
-                </div>
-            </a>
-            <a href="#" onclick="showSection('skills')">
-                <span class="icon"><i class="fas fa-code"></i></span>Skills
-                <div class="dropdown">
-                    <a href="#">Programming Languages</a>
-                    <a href="#">Technologies</a>
-                    <a href="#">Certifications</a>
-                </div>
-            </a>
-            <a href="#" onclick="showSection('contact')">
-                <span class="icon"><i class="fas fa-envelope"></i></span>Contact
-                <div class="dropdown">
-                    <a href="#">Email</a>
-                    <a href="#">LinkedIn</a>
-                    <a href="#">GitHub</a>
-                    <a href="#">Twitter</a>
-                </div>
-            </a>
-        </nav>
-        <div class="search-bar">
-            <input type="text" placeholder="Search...">
-        </div>
+        <p>Software Engineer II | Pune, India</p>
+        <p>Email: <a href="mailto:hdspgame@gmail.com">hdspgame@gmail.com</a> | Phone: +91 9039133202</p>
     </header>
-
-    <section id="home" class="active">
-        <h2>Home</h2>
-        <p>Welcome to my personal webpage! Here you'll find information about my projects, skills, and how to get in touch with me.</p>
-        <p>I am a software engineer and student. I enjoy reading novels, playing soccer, and exploring new technologies.</p>
-        <p>Some of my favorite activities include:</p>
-        <ul>
-            <li>Reading Science Fiction novels</li>
-            <li>Playing soccer with friends</li>
-            <li>Exploring new programming languages</li>
-            <li>Traveling and experiencing new cultures</li>
-        </ul>
-    </section>
 
     <section id="about">
         <h2>About Me</h2>
-        <p>Software Engineering proudly oﬀers over 3 years of experience handling such tasks as code writing,
-project planning, and web application development. Polished professional with the ability to supply
-support to clients about implementations. Works eﬀectively as part of a dedicated team or in a solitary
-role. Versatile software engineer works well both as part of a team and independently. Highly educated
-with the capability to deliver on key project milestones. Seeking to secure an engineering role with an
-internationally astute firm in the clinical and healthcare industry.
+        <p>Inventive Senior Software Developer with 3 years and 7 months of experience designing and deploying Java microservices using Spring Boot. Known for developing scalable high-performance applications to enhance user experience and operational efficiency.</p>
     </section>
 
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="project">
-            <h3>Project 1</h3>
-            <p>Description of your project. Highlight what you did, technologies used, and the outcome.</p>
-        </div>
-        <div class="project">
-            <h3>Project 2</h3>
-            <p>Description of your project. Highlight what you did, technologies used, and the outcome.</p>
-        </div>
-        <!-- Add more projects as needed -->
+    <section id="experience">
+        <h2>Work Experience</h2>
+        <ul>
+            <li>
+                <strong>Software Engineer II</strong>, Bajaj Finserv Direct Limited (08/2022 - Present)<br>
+                Resolved Jira tickets, developed REST endpoints, and onboarded partners with complete end-to-end flows.
+            </li>
+            <li>
+                <strong>Programmer Analyst</strong>, Cognizant Technology (12/2020 - 08/2022)<br>
+                Created REST endpoints and performed comprehensive bug fixes using Java.
+            </li>
+        </ul>
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+        <p><strong>Bachelor of Engineering</strong>, Mahakal Institute of Technology (06/2016 - 07/2020)<br>
+        Major: Computer Science and Engineering</p>
     </section>
 
     <section id="skills">
         <h2>Skills</h2>
-        <div class="skill">
-            <h3>Programming Languages</h3>
-            <p>List of programming languages you are proficient in (e.g., JavaScript, Python, Java).</p>
-        </div>
-        <div class="skill">
-            <h3>Technologies & Frameworks</h3>
-            <p>List of technologies and frameworks you are familiar with (e.g., React, Node.js, Django).</p>
-        </div>
-        <!-- Add more skills as needed -->
+        <ul>
+            <li>Spring Boot, Java (1.8), REST APIs, Camunda, Microservices</li>
+            <li>Frontend: HTML, CSS, JavaScript</li>
+            <li>Database: MongoDB, PostgresDB</li>
+            <li>Tools: JIRA, Mac OS, Windows</li>
+        </ul>
     </section>
 
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Feel free to reach out to me through the following platforms:</p>
-        <div class="contact-info">
-            <p>Email: <a href="mailto:your.email@example.com"><span class="icon"><i class="fas fa-envelope"></i></span>your.email@example.com</a></p>
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/yourprofile" target="_blank"><span class="icon"><i class="fab fa-linkedin"></i></span>Your LinkedIn</a></p>
-            <p>GitHub: <a href="https://github.com/yourusername" target="_blank"><span class="icon"><i class="fab fa-github"></i></span>Your GitHub</a></p>
-            <p>Twitter: <a href="https://twitter.com/yourusername" target="_blank"><span class="icon"><i class="fab fa-twitter"></i></span>@yourusername</a></p>
-        </div>
+    <section id="projects">
+        <h2>Personal Projects</h2>
+        <p><strong>Hybrid Development Environment (HDE)</strong> (06/2017 - 12/2018)</p>
+        <p>A development environment to compile and run C, C++, and Java programs with features for teachers to check students' work in labs. Built using Java Swing, AWT, and Java Server technologies.</p>
     </section>
 
     <footer>
-        &copy; 2024 Your Name. All rights reserved.
+        <p>&copy; 2024 Harshdeep Singh Parihar</p>
     </footer>
-  </div>
 </body>
 </html>
