@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>My 3-D Résumé</title>
+
+  <!-- Full-screen canvas styling -->
   <style>
-    /* Full-screen canvas */
-    body, html { margin: 0; height: 100%; overflow: hidden; background:#101014; }
-    #resumeCanvas { display: block; }
-    /* Tooltip for clickable résumé */
+    html,body { margin:0; height:100%; overflow:hidden; background:#101014; }
+    #resumeCanvas { display:block; width:100%; height:100%; }
     #downloadTip{
       position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
       padding:8px 14px; border-radius:4px; background:#fff2; color:#ddd;
-      font-family:Arial, sans-serif; font-size:0.9rem; pointer-events:none;
-      transition:opacity .3s; opacity:0;
+      font:0.9rem/1.4 Arial, sans-serif; pointer-events:none; opacity:0;
+      transition:opacity .3s;
     }
     #downloadTip.show{ opacity:1; }
   </style>
@@ -22,120 +22,107 @@
   <canvas id="resumeCanvas"></canvas>
   <div id="downloadTip">Click the sheet to download PDF résumé</div>
 
-  <!-- IMPORT Three.js & supporting loaders -->
-  <!-- Replace the placeholders below with proper CDN or local paths -->
-  <script src="PATH_TO_THREE/three.min.js"></script>
-  <script src="PATH_TO_THREE/examples/jsm/controls/OrbitControls.js" type="module"></script>
-  <script src="PATH_TO_THREE/examples/jsm/loaders/FontLoader.js"    type="module"></script>
-  <script src="PATH_TO_THREE/examples/jsm/geometries/TextGeometry.js" type="module"></script>
-
+  <!-- THREE.JS & HELPERS (via unpkg CDN) -->
   <script type="module">
-  /* ---------- Basic scene setup ---------- */
-  import * as THREE from 'PATH_TO_THREE/three.module.js';
-  import { OrbitControls } from 'PATH_TO_THREE/examples/jsm/controls/OrbitControls.js';
-  import { FontLoader }  from 'PATH_TO_THREE/examples/jsm/loaders/FontLoader.js';
-  import { TextGeometry } from 'PATH_TO_THREE/examples/jsm/geometries/TextGeometry.js';
+    /* ---------------- IMPORTS ---------------- */
+    import * as THREE        from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+    import { OrbitControls } from 'https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js';
+    import { FontLoader }    from 'https://unpkg.com/three@0.160.0/examples/jsm/loaders/FontLoader.js';
+    import { TextGeometry }  from 'https://unpkg.com/three@0.160.0/examples/jsm/geometries/TextGeometry.js';
 
-  const canvas  = document.getElementById('resumeCanvas');
-  const scene   = new THREE.Scene();
-  const camera  = new THREE.PerspectiveCamera(55, innerWidth/innerHeight, 0.1, 100);
-  camera.position.set(0, 1.5, 5);
+    /* ---------------- SCENE SETUP ---------------- */
+    const canvas   = document.getElementById('resumeCanvas');
+    const scene    = new THREE.Scene();
+    const camera   = new THREE.PerspectiveCamera(55, innerWidth/innerHeight, 0.1, 100);
+    camera.position.set(0, 1.5, 5);
 
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
-  renderer.setSize(innerWidth, innerHeight);
-  renderer.setPixelRatio(devicePixelRatio);
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
+    renderer.setPixelRatio(devicePixelRatio);
+    renderer.setSize(innerWidth, innerHeight);
 
-  /* ---------- Lights ---------- */
-  const ambient = new THREE.AmbientLight(0xffffff, 0.5);
-  scene.add(ambient);
-  const dir = new THREE.DirectionalLight(0xffffff, 1.0);
-  dir.position.set(3, 4, 5);
-  scene.add(dir);
+    /* ---------------- LIGHTS ---------------- */
+    scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+    const dir = new THREE.DirectionalLight(0xffffff, 1);
+    dir.position.set(3,4,5);
+    scene.add(dir);
 
-  /* ---------- 3-D Name Text ---------- */
-  const fontLoader = new FontLoader();
-  fontLoader.load('PATH_TO_FONT/helvetiker_regular.typeface.json', font => {
+    /* ---------------- 3-D NAME ---------------- */
+    const fontLoader = new FontLoader();
+    // Put helvetiker_regular.typeface.json in the same folder as index.html
+    fontLoader.load('./helvetiker_regular.typeface.json', font => {
       const textGeo = new TextGeometry('YOUR NAME', {
-          font: font,
-          size: 0.6,
-          height: 0.15,
-          curveSegments: 12,
-          bevelEnabled: true,
-          bevelThickness: 0.02,
-          bevelSize: 0.02,
-          bevelSegments: 5
+        font, size:0.6, height:0.15, curveSegments:12,
+        bevelEnabled:true, bevelThickness:0.02, bevelSize:0.02, bevelSegments:5
       });
       textGeo.center();
-      const material = new THREE.MeshStandardMaterial({ color:0x00c8ff, metalness:0.5, roughness:0.25 });
-      const mesh = new THREE.Mesh(textGeo, material);
+      const mat = new THREE.MeshStandardMaterial({ color:0x00c8ff, metalness:0.5, roughness:0.25 });
+      const mesh = new THREE.Mesh(textGeo, mat);
       mesh.position.y = 0.5;
       scene.add(mesh);
-  });
+    });
 
-  /* ---------- Decorative rotating octahedrons ---------- */
-  const decoMat = new THREE.MeshStandardMaterial({ color:0xff4080, metalness:0.3, roughness:0.4 });
-  const octa1 = new THREE.Mesh(new THREE.OctahedronGeometry(0.3), decoMat);
-  const octa2 = octa1.clone();
-  octa1.position.set(-1.3, 1.1, 0);
-  octa2.position.set( 1.3,-0.8, 0);
-  scene.add(octa1, octa2);
+    /* ---------------- DECORATIVE SHAPES ---------------- */
+    const decoMat = new THREE.MeshStandardMaterial({ color:0xff4080, metalness:0.3, roughness:0.4 });
+    const octa1   = new THREE.Mesh(new THREE.OctahedronGeometry(0.3), decoMat);
+    const octa2   = octa1.clone();
+    octa1.position.set(-1.3, 1.1, 0);
+    octa2.position.set( 1.3,-0.8, 0);
+    scene.add(octa1, octa2);
 
-  /* ---------- Clickable résumé plane ---------- */
-  const planeGeo = new THREE.PlaneGeometry(1.5, 2);
-  const planeMat = new THREE.MeshBasicMaterial({ color:0xffffff, opacity:0.6, transparent:true });
-  const resumePlane = new THREE.Mesh(planeGeo, planeMat);
-  resumePlane.position.set(0,-1.1,0);
-  scene.add(resumePlane);
+    /* ---------------- CLICKABLE RÉSUMÉ PLANE ---------------- */
+    const planeGeo  = new THREE.PlaneGeometry(1.5, 2);
+    const planeMat  = new THREE.MeshBasicMaterial({ color:0xffffff, opacity:0.6, transparent:true });
+    const resumePDF = new THREE.Mesh(planeGeo, planeMat);
+    resumePDF.position.set(0,-1.1,0);
+    scene.add(resumePDF);
 
-  /* ---------- Interaction ---------- */
-  const controls = new OrbitControls(camera, renderer.domElement);
-  controls.enableDamping = true;
+    /* ---------------- ORBIT CONTROLS ---------------- */
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
 
-  const raycaster = new THREE.Raycaster();
-  const pointer   = new THREE.Vector2();
-  const tip       = document.getElementById('downloadTip');
+    /* ---------------- RAYCAST & INTERACTION ---------------- */
+    const raycaster = new THREE.Raycaster();
+    const pointer   = new THREE.Vector2();
+    const tip       = document.getElementById('downloadTip');
 
-  function onPointerMove(e){
-      pointer.x = (e.clientX/innerWidth)*2 - 1;
-      pointer.y = -(e.clientY/innerHeight)*2 + 1;
-  }
+    function onPointerMove(e){
+      pointer.x =  (e.clientX / innerWidth ) * 2 - 1;
+      pointer.y = -(e.clientY / innerHeight) * 2 + 1;
+    }
+    window.addEventListener('pointermove', onPointerMove);
 
-  function onClick(){
+    window.addEventListener('click', () => {
       raycaster.setFromCamera(pointer, camera);
-      const hit = raycaster.intersectObject(resumePlane);
-      if(hit.length){
-          /* Replace with actual résumé file path */
-          window.open('PATH_TO_YOUR_RESUME/resume.pdf', '_blank');
+      const hit = raycaster.intersectObject(resumePDF);
+      if (hit.length){
+        // Place your PDF in the repo root or adjust the relative path here
+        window.open('./resume.pdf', '_blank');
       }
-  }
+    });
 
-  window.addEventListener('pointermove', onPointerMove);
-  window.addEventListener('click',       onClick);
-
-  /* Show tooltip when hovering over résumé */
-  function updateTooltip(){
+    /* Hover tooltip */
+    function updateTooltip(){
       raycaster.setFromCamera(pointer, camera);
-      const hover = raycaster.intersectObject(resumePlane);
-      tip.classList.toggle('show', hover.length>0);
-  }
+      tip.classList.toggle('show', raycaster.intersectObject(resumePDF).length>0);
+    }
 
-  /* ---------- Render loop ---------- */
-  function animate(){
+    /* ---------------- RENDER LOOP ---------------- */
+    function animate(){
       requestAnimationFrame(animate);
-      octa1.rotation.x += 0.01; octa1.rotation.y += 0.015;
+      octa1.rotation.x += 0.01;  octa1.rotation.y += 0.015;
       octa2.rotation.x -= 0.015; octa2.rotation.y -= 0.01;
       controls.update();
       updateTooltip();
       renderer.render(scene, camera);
-  }
-  animate();
+    }
+    animate();
 
-  /* ---------- Responsiveness ---------- */
-  window.addEventListener('resize', ()=>{
+    /* ---------------- HANDLE RESIZE ---------------- */
+    window.addEventListener('resize', ()=>{
       camera.aspect = innerWidth/innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(innerWidth, innerHeight);
-  });
+    });
   </script>
 </body>
 </html>
