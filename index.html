@@ -1,123 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>My 3-D Résumé</title>
-
-  <!-- Full-screen canvas -->
+  <meta charset="UTF-8">
+  <title>Harshdeep Singh Parihar — Resume Tunnel</title>
   <style>
-    html,body { margin:0; height:100%; overflow:hidden; background:#101014; }
-    #resumeCanvas { display:block; width:100%; height:100%; }
-    #downloadTip{
-      position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
-      padding:8px 14px; border-radius:4px; background:#fff2; color:#ddd;
-      font:0.9rem/1.4 Arial, sans-serif; pointer-events:none; opacity:0;
-      transition:opacity .3s;
+    html, body { margin:0; padding:0; height:100%; }
+    body {
+      overflow:hidden;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: #101010;
+      color: #f7f7f7;
     }
-    #downloadTip.show{ opacity:1; }
+    #three-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+    .content-overlay {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(16,16,16, 0.88);
+      border: 2px solid #e50914;
+      border-radius: 16px;
+      padding: 24px 40px;
+      z-index: 2;
+      min-width: 320px;
+      max-width: 640px;
+      box-shadow: 0 6px 24px #0008;
+      text-align: left;
+    }
+    .content-overlay h1 {
+      font-size: 2rem;
+      letter-spacing: 1px;
+      color: #e50914;
+      margin-bottom: .4em;
+    }
+    .content-overlay h2 {
+      margin-top: 1.6em;
+      margin-bottom: .3em;
+      color: #e50914;
+      text-transform: uppercase;
+      font-size: 1.15rem;
+    }
+    .content-overlay ul {
+      margin: 0 0 1em 1.2em;
+      padding: 0;
+      color: #fff;
+    }
+    .content-overlay .contact,
+    .content-overlay .location {
+      color: #fff;
+      opacity: .7;
+      font-size: .98em;
+      margin-bottom: 6px;
+    }
+    .content-overlay .skill {
+      background: #e50914;
+      color: #fff;
+      display: inline-block;
+      border-radius: 9px;
+      padding: 3px 18px 3px 11px;
+      margin: 0 8px 8px 0;
+      font-size: 0.93em;
+      line-height: 2.1em;
+      font-weight: bold;
+    }
+    @media (max-width:700px) {
+      .content-overlay { max-width:90vw;padding:18px 8px;}
+      .content-overlay h1{font-size:1.3rem;}
+    }
   </style>
 </head>
-
 <body>
-  <canvas id="resumeCanvas"></canvas>
-  <div id="downloadTip">Click the sheet to download PDF résumé</div>
+  <canvas id="three-canvas"></canvas>
+  <div class="content-overlay">
+    <h1>Harshdeep Singh Parihar</h1>
+    <div class="contact">Software Engineer II &nbsp; | &nbsp; hdspgame@gmail.com &nbsp; | &nbsp; +91 9039133202</div>
+    <div class="location">Pune, INDIA</div>
 
-  <!-- SINGLE ES-MODULE SCRIPT (no bundler) -->
-  <script type="module">
-    /* ---------- Imports with ?module so the CDN fixes bare specifiers ---------- */
-    import * as THREE        from 'https://unpkg.com/three@0.160.0/build/three.module.js';
-    import { OrbitControls } from 'https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js?module';
-    import { FontLoader }    from 'https://unpkg.com/three@0.160.0/examples/jsm/loaders/FontLoader.js?module';
-    import { TextGeometry }  from 'https://unpkg.com/three@0.160.0/examples/jsm/geometries/TextGeometry.js?module';
+    <h2>Work Experience</h2>
+    <ul>
+      <li><b>Software Engineer II</b>, Bajaj Finserv Direct Ltd (08/2022 - Present)<br>
+        - REST Microservices, Elastic Search, BPMN, Java</li>
+      <li><b>Programmer Analyst</b>, Cognizant Technology (12/2020 - 08/2022)<br>
+        - Java, Microservices, Bug Fixes, Jira</li>
+    </ul>
+    <h2>Education</h2>
+    <ul>
+      <li><b>Bachelor of Engineering</b>, Mahakal Institute of Technology (2016–2020)</li>
+    </ul>
+    <h2>Skills</h2>
+    <span class="skill">Java</span>
+    <span class="skill">Spring Boot</span>
+    <span class="skill">REST APIs</span>
+    <span class="skill">Microservices</span>
+    <span class="skill">HTML/CSS</span>
+    <span class="skill">Angular</span>
+    <span class="skill">JPA</span>
+    <span class="skill">MongoDB</span>
+    <span class="skill">PostgresDB</span>
+    <span class="skill">JIRA</span>
+    <span class="skill">Camunda BPMN</span>
+    <span class="skill">JavaScript</span>
+    <span class="skill">Debugging</span>
+    <span class="skill">Scrum</span>
 
-    /* ---------- Scene setup ---------- */
-    const canvas   = document.getElementById('resumeCanvas');
-    const scene    = new THREE.Scene();
-    const camera   = new THREE.PerspectiveCamera(55, innerWidth/innerHeight, 0.1, 100);
-    camera.position.set(0, 1.5, 5);
+    <h2>Projects</h2>
+    <ul>
+      <li><b>Hybrid Development Environment</b> (2017–2018): Java, Swing, AWT — IDE for C/C++/Java, lab session management.</li>
+    </ul>
+    <h2>Achievements</h2>
+    <ul>
+      <li>Lakshay Award (2023): Vietnam trip for exemplary performance.</li>
+    </ul>
+    <h2>Languages & Interests</h2>
+    <ul>
+      <li>English (Professional)</li>
+      <li>PC Gaming, Movies</li>
+    </ul>
+  </div>
+  <!-- Three.js Tunnel Effect -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.155.0/examples/js/controls/OrbitControls.min.js"></script>
+  <script>
+    // Basic tunnel effect settings (black/white/red)
+    const canvas = document.getElementById('three-canvas');
+    const renderer = new THREE.WebGLRenderer({canvas, antialias:true});
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setClearColor(0x101010, 1);
 
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
-    renderer.setPixelRatio(devicePixelRatio);
-    renderer.setSize(innerWidth, innerHeight);
+    const scene = new THREE.Scene();
 
-    /* ---------- Lights ---------- */
-    scene.add(new THREE.AmbientLight(0xffffff, 0.5));
-    const dir = new THREE.DirectionalLight(0xffffff, 1);
-    dir.position.set(3,4,5);
-    scene.add(dir);
-
-    /* ---------- 3-D Name ---------- */
-    const fontLoader = new FontLoader();
-    fontLoader.load('./helvetiker_regular.typeface.json', font => {
-      const textGeo = new TextGeometry('YOUR NAME', {
-        font, size:0.6, height:0.15, curveSegments:12,
-        bevelEnabled:true, bevelThickness:0.02, bevelSize:0.02, bevelSegments:5
-      });
-      textGeo.center();
-      const mat = new THREE.MeshStandardMaterial({ color:0x00c8ff, metalness:0.5, roughness:0.25 });
-      const mesh = new THREE.Mesh(textGeo, mat);
-      mesh.position.y = 0.5;
-      scene.add(mesh);
+    // Tunnel geometry: long cylinder, camera inside
+    const geometry = new THREE.CylinderGeometry(15, 15, 200, 50, 1, true); // open-ended
+    // Tunnel material: radial stripes pattern (black/white/red)
+    const tunnelMaterial = new THREE.MeshBasicMaterial({
+      color: 0xffffff,
+      side: THREE.BackSide,
+      wireframe: false
     });
+    // Optional: create a custom stripe texture or gradients instead of just white
+    // We'll use a thin red stripe
+    const canvasTex = document.createElement('canvas');
+    canvasTex.width = 512;
+    canvasTex.height = 32;
+    const ctx = canvasTex.getContext('2d');
+    ctx.fillStyle = '#fff'; ctx.fillRect(0,0,512,32);
+    ctx.fillStyle = '#e50914'; ctx.fillRect(0,0,32,32); // left red stripe
+    ctx.fillRect(208,0,96,32); // mid red stripe
+    ctx.fillStyle = '#000'; ctx.fillRect(512-32,0,32,32); // black stripe
+    tunnelMaterial.map = new THREE.Texture(canvasTex);
+    tunnelMaterial.map.wrapS = THREE.RepeatWrapping;
+    tunnelMaterial.map.wrapT = THREE.RepeatWrapping;
+    tunnelMaterial.map.repeat.set(12,1);
+    tunnelMaterial.map.needsUpdate = true;
 
-    /* ---------- Decorative shapes ---------- */
-    const decoMat = new THREE.MeshStandardMaterial({ color:0xff4080, metalness:0.3, roughness:0.4 });
-    const octa1   = new THREE.Mesh(new THREE.OctahedronGeometry(0.3), decoMat);
-    const octa2   = octa1.clone();
-    octa1.position.set(-1.3, 1.1, 0);
-    octa2.position.set( 1.3,-0.8, 0);
-    scene.add(octa1, octa2);
+    const tunnel = new THREE.Mesh(geometry, tunnelMaterial);
+    scene.add(tunnel);
 
-    /* ---------- Clickable résumé plane ---------- */
-    const planeGeo  = new THREE.PlaneGeometry(1.5, 2);
-    const planeMat  = new THREE.MeshBasicMaterial({ color:0xffffff, opacity:0.6, transparent:true });
-    const resumePDF = new THREE.Mesh(planeGeo, planeMat);
-    resumePDF.position.set(0,-1.1,0);
-    scene.add(resumePDF);
+    const camera = new THREE.PerspectiveCamera(80, window.innerWidth/window.innerHeight, 0.1, 400);
+    camera.position.z = 90; // Start at one end of the tunnel
 
-    /* ---------- Orbit controls ---------- */
-    const controls = new OrbitControls(camera, renderer.domElement);
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enablePan = false;
+    controls.enableZoom = false;
     controls.enableDamping = true;
 
-    /* ---------- Ray-casting interaction ---------- */
-    const raycaster = new THREE.Raycaster();
-    const pointer   = new THREE.Vector2();
-    const tip       = document.getElementById('downloadTip');
-
-    function onPointerMove(e){
-      pointer.x =  (e.clientX / innerWidth ) * 2 - 1;
-      pointer.y = -(e.clientY / innerHeight) * 2 + 1;
-    }
-    window.addEventListener('pointermove', onPointerMove);
-
-    window.addEventListener('click', () => {
-      raycaster.setFromCamera(pointer, camera);
-      if (raycaster.intersectObject(resumePDF).length){
-        window.open('./resume.pdf', '_blank');  // adjust path if needed
-      }
-    });
-
-    function updateTooltip(){
-      raycaster.setFromCamera(pointer, camera);
-      tip.classList.toggle('show', raycaster.intersectObject(resumePDF).length>0);
-    }
-
-    /* ---------- Render loop ---------- */
-    function animate(){
+    // Animate moving through the tunnel
+    let camZ = 90;
+    function animate() {
       requestAnimationFrame(animate);
-      octa1.rotation.x += 0.01;  octa1.rotation.y += 0.015;
-      octa2.rotation.x -= 0.015; octa2.rotation.y -= 0.01;
+
+      camZ -= .35;
+      if (camZ < -90) camZ = 90;
+      camera.position.z = camZ;
       controls.update();
-      updateTooltip();
+
+      // Texture scrolling
+      tunnelMaterial.map.offset.y += 0.006;
       renderer.render(scene, camera);
     }
     animate();
 
-    /* ---------- Handle resize ---------- */
-    window.addEventListener('resize', () => {
-      camera.aspect = innerWidth/innerHeight;
+    // Resize events
+    window.addEventListener('resize',()=>{
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
-      renderer.setSize(innerWidth, innerHeight);
     });
   </script>
 </body>
