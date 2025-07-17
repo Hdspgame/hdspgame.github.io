@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>My 3-D Résumé</title>
 
-  <!-- Full-screen canvas styling -->
+  <!-- Full-screen canvas -->
   <style>
     html,body { margin:0; height:100%; overflow:hidden; background:#101014; }
     #resumeCanvas { display:block; width:100%; height:100%; }
@@ -22,15 +22,15 @@
   <canvas id="resumeCanvas"></canvas>
   <div id="downloadTip">Click the sheet to download PDF résumé</div>
 
-  <!-- THREE.JS & HELPERS (via unpkg CDN) -->
+  <!-- SINGLE ES-MODULE SCRIPT (no bundler) -->
   <script type="module">
-    /* ---------------- IMPORTS ---------------- */
+    /* ---------- Imports with ?module so the CDN fixes bare specifiers ---------- */
     import * as THREE        from 'https://unpkg.com/three@0.160.0/build/three.module.js';
-    import { OrbitControls } from 'https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js';
-    import { FontLoader }    from 'https://unpkg.com/three@0.160.0/examples/jsm/loaders/FontLoader.js';
-    import { TextGeometry }  from 'https://unpkg.com/three@0.160.0/examples/jsm/geometries/TextGeometry.js';
+    import { OrbitControls } from 'https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js?module';
+    import { FontLoader }    from 'https://unpkg.com/three@0.160.0/examples/jsm/loaders/FontLoader.js?module';
+    import { TextGeometry }  from 'https://unpkg.com/three@0.160.0/examples/jsm/geometries/TextGeometry.js?module';
 
-    /* ---------------- SCENE SETUP ---------------- */
+    /* ---------- Scene setup ---------- */
     const canvas   = document.getElementById('resumeCanvas');
     const scene    = new THREE.Scene();
     const camera   = new THREE.PerspectiveCamera(55, innerWidth/innerHeight, 0.1, 100);
@@ -40,15 +40,14 @@
     renderer.setPixelRatio(devicePixelRatio);
     renderer.setSize(innerWidth, innerHeight);
 
-    /* ---------------- LIGHTS ---------------- */
+    /* ---------- Lights ---------- */
     scene.add(new THREE.AmbientLight(0xffffff, 0.5));
     const dir = new THREE.DirectionalLight(0xffffff, 1);
     dir.position.set(3,4,5);
     scene.add(dir);
 
-    /* ---------------- 3-D NAME ---------------- */
+    /* ---------- 3-D Name ---------- */
     const fontLoader = new FontLoader();
-    // Put helvetiker_regular.typeface.json in the same folder as index.html
     fontLoader.load('./helvetiker_regular.typeface.json', font => {
       const textGeo = new TextGeometry('YOUR NAME', {
         font, size:0.6, height:0.15, curveSegments:12,
@@ -61,7 +60,7 @@
       scene.add(mesh);
     });
 
-    /* ---------------- DECORATIVE SHAPES ---------------- */
+    /* ---------- Decorative shapes ---------- */
     const decoMat = new THREE.MeshStandardMaterial({ color:0xff4080, metalness:0.3, roughness:0.4 });
     const octa1   = new THREE.Mesh(new THREE.OctahedronGeometry(0.3), decoMat);
     const octa2   = octa1.clone();
@@ -69,18 +68,18 @@
     octa2.position.set( 1.3,-0.8, 0);
     scene.add(octa1, octa2);
 
-    /* ---------------- CLICKABLE RÉSUMÉ PLANE ---------------- */
+    /* ---------- Clickable résumé plane ---------- */
     const planeGeo  = new THREE.PlaneGeometry(1.5, 2);
     const planeMat  = new THREE.MeshBasicMaterial({ color:0xffffff, opacity:0.6, transparent:true });
     const resumePDF = new THREE.Mesh(planeGeo, planeMat);
     resumePDF.position.set(0,-1.1,0);
     scene.add(resumePDF);
 
-    /* ---------------- ORBIT CONTROLS ---------------- */
+    /* ---------- Orbit controls ---------- */
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
 
-    /* ---------------- RAYCAST & INTERACTION ---------------- */
+    /* ---------- Ray-casting interaction ---------- */
     const raycaster = new THREE.Raycaster();
     const pointer   = new THREE.Vector2();
     const tip       = document.getElementById('downloadTip');
@@ -93,20 +92,17 @@
 
     window.addEventListener('click', () => {
       raycaster.setFromCamera(pointer, camera);
-      const hit = raycaster.intersectObject(resumePDF);
-      if (hit.length){
-        // Place your PDF in the repo root or adjust the relative path here
-        window.open('./resume.pdf', '_blank');
+      if (raycaster.intersectObject(resumePDF).length){
+        window.open('./resume.pdf', '_blank');  // adjust path if needed
       }
     });
 
-    /* Hover tooltip */
     function updateTooltip(){
       raycaster.setFromCamera(pointer, camera);
       tip.classList.toggle('show', raycaster.intersectObject(resumePDF).length>0);
     }
 
-    /* ---------------- RENDER LOOP ---------------- */
+    /* ---------- Render loop ---------- */
     function animate(){
       requestAnimationFrame(animate);
       octa1.rotation.x += 0.01;  octa1.rotation.y += 0.015;
@@ -117,8 +113,8 @@
     }
     animate();
 
-    /* ---------------- HANDLE RESIZE ---------------- */
-    window.addEventListener('resize', ()=>{
+    /* ---------- Handle resize ---------- */
+    window.addEventListener('resize', () => {
       camera.aspect = innerWidth/innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(innerWidth, innerHeight);
