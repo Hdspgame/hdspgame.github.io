@@ -1,254 +1,141 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harshdeep Singh Parihar - Portfolio</title>
-    <style>
-        /* General reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Courier New', Courier, monospace;
-            background-color: #121212;
-            color: #ffffff;
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 15%;
-            height: 100vh;
-            background-color: #1a1a1a;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .sidebar a {
-            text-decoration: none;
-            color: #ffffff;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .sidebar a:hover {
-            color: #e63946;
-        }
-
-        .main-container {
-            margin-left: 15%;
-            padding: 2rem;
-            width: 85%;
-        }
-
-        .header {
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-        }
-
-        .header p {
-            font-size: 1rem;
-            color: #aaaaaa;
-        }
-
-        .section {
-            margin-bottom: 2rem;
-        }
-
-        .section h2 {
-            font-size: 1.8rem;
-            color: #e63946;
-            margin-bottom: 1rem;
-        }
-
-        .section p,
-        .section ul {
-            font-size: 1rem;
-            color: #dddddd;
-        }
-
-        .section ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        .section ul li {
-            margin-bottom: 0.5rem;
-            padding-left: 1rem;
-            position: relative;
-        }
-
-        .section ul li::before {
-            content: "\2022";
-            position: absolute;
-            left: 0;
-            color: #e63946;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 2rem;
-            font-size: 0.9rem;
-            color: #aaaaaa;
-        }
-
-        a {
-            color: #e63946;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .fade-in {
-            animation: fadeIn 1.5s ease-in;
-        }
-
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                flex-direction: row;
-                justify-content: space-around;
-                padding: 1rem;
-            }
-
-            .main-container {
-                margin-left: 0;
-                width: 100%;
-                padding: 1rem;
-            }
-
-            .header h1 {
-                font-size: 2rem;
-            }
-
-            .header p {
-                font-size: 0.9rem;
-            }
-
-            .section h2 {
-                font-size: 1.5rem;
-            }
-
-            .section p,
-            .section ul {
-                font-size: 0.9rem;
-            }
-
-            .footer {
-                font-size: 0.8rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header h1 {
-                font-size: 1.8rem;
-            }
-
-            .header p {
-                font-size: 0.8rem;
-            }
-
-            .section h2 {
-                font-size: 1.3rem;
-            }
-
-            .section p,
-            .section ul {
-                font-size: 0.8rem;
-            }
-
-            .sidebar a {
-                font-size: 1rem;
-            }
-
-            .footer {
-                font-size: 0.7rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>My 3-D Résumé</title>
+  <style>
+    /* Full-screen canvas */
+    body, html { margin: 0; height: 100%; overflow: hidden; background:#101014; }
+    #resumeCanvas { display: block; }
+    /* Tooltip for clickable résumé */
+    #downloadTip{
+      position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
+      padding:8px 14px; border-radius:4px; background:#fff2; color:#ddd;
+      font-family:Arial, sans-serif; font-size:0.9rem; pointer-events:none;
+      transition:opacity .3s; opacity:0;
+    }
+    #downloadTip.show{ opacity:1; }
+  </style>
 </head>
+
 <body>
-    <div class="sidebar">
-        <nav>
-            <a href="#about">About</a>
-            <a href="#experience">Experience</a>
-            <a href="#education">Education</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-        </nav>
-        <footer>
-            <p>&copy; 2024 Harshdeep Singh Parihar</p>
-        </footer>
-    </div>
+  <canvas id="resumeCanvas"></canvas>
+  <div id="downloadTip">Click the sheet to download PDF résumé</div>
 
-    <div class="main-container">
-        <div class="header fade-in">
-            <h1>Harshdeep Singh Parihar</h1>
-            <p>Software Engineer II | Pune, India</p>
-            <p>Email: <a href="mailto:hdspgame@gmail.com">hdspgame@gmail.com</a> | Phone: +91 9039133202</p>
-        </div>
+  <!-- IMPORT Three.js & supporting loaders -->
+  <!-- Replace the placeholders below with proper CDN or local paths -->
+  <script src="PATH_TO_THREE/three.min.js"></script>
+  <script src="PATH_TO_THREE/examples/jsm/controls/OrbitControls.js" type="module"></script>
+  <script src="PATH_TO_THREE/examples/jsm/loaders/FontLoader.js"    type="module"></script>
+  <script src="PATH_TO_THREE/examples/jsm/geometries/TextGeometry.js" type="module"></script>
 
-        <div class="section fade-in" id="about">
-            <h2>About Me</h2>
-            <p>Inventive Senior Software Developer with 3 years and 7 months of experience designing and deploying Java microservices using Spring Boot. Known for developing scalable high-performance applications to enhance user experience and operational efficiency.</p>
-        </div>
+  <script type="module">
+  /* ---------- Basic scene setup ---------- */
+  import * as THREE from 'PATH_TO_THREE/three.module.js';
+  import { OrbitControls } from 'PATH_TO_THREE/examples/jsm/controls/OrbitControls.js';
+  import { FontLoader }  from 'PATH_TO_THREE/examples/jsm/loaders/FontLoader.js';
+  import { TextGeometry } from 'PATH_TO_THREE/examples/jsm/geometries/TextGeometry.js';
 
-        <div class="section fade-in" id="experience">
-            <h2>Work Experience</h2>
-            <ul>
-                <li><strong>Software Engineer II</strong>, Bajaj Finserv Direct Limited (08/2022 - Present)<br>Resolved Jira tickets, developed REST endpoints, and onboarded partners with complete end-to-end flows.</li>
-                <li><strong>Programmer Analyst</strong>, Cognizant Technology (12/2020 - 08/2022)<br>Created REST endpoints and performed comprehensive bug fixes using Java.</li>
-            </ul>
-        </div>
+  const canvas  = document.getElementById('resumeCanvas');
+  const scene   = new THREE.Scene();
+  const camera  = new THREE.PerspectiveCamera(55, innerWidth/innerHeight, 0.1, 100);
+  camera.position.set(0, 1.5, 5);
 
-        <div class="section fade-in" id="education">
-            <h2>Education</h2>
-            <p><strong>Bachelor of Engineering</strong>, Mahakal Institute of Technology (06/2016 - 07/2020)<br>Major: Computer Science and Engineering</p>
-        </div>
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
+  renderer.setSize(innerWidth, innerHeight);
+  renderer.setPixelRatio(devicePixelRatio);
 
-        <div class="section fade-in" id="skills">
-            <h2>Skills</h2>
-            <ul>
-                <li>Spring Boot, Java (1.8), REST APIs, Camunda, Microservices</li>
-                <li>Frontend: HTML, CSS, JavaScript</li>
-                <li>Database: MongoDB, PostgresDB</li>
-                <li>Tools: JIRA, Mac OS, Windows</li>
-            </ul>
-        </div>
+  /* ---------- Lights ---------- */
+  const ambient = new THREE.AmbientLight(0xffffff, 0.5);
+  scene.add(ambient);
+  const dir = new THREE.DirectionalLight(0xffffff, 1.0);
+  dir.position.set(3, 4, 5);
+  scene.add(dir);
 
-        <div class="section fade-in" id="projects">
-            <h2>Personal Projects</h2>
-            <p><strong>Hybrid Development Environment (HDE)</strong> (06/2017 - 12/2018)</p>
-            <p>A development environment to compile and run C, C++, and Java programs with features for teachers to check students' work in labs. Built using Java Swing, AWT, and Java Server technologies.</p>
-        </div>
-    </div>
+  /* ---------- 3-D Name Text ---------- */
+  const fontLoader = new FontLoader();
+  fontLoader.load('PATH_TO_FONT/helvetiker_regular.typeface.json', font => {
+      const textGeo = new TextGeometry('YOUR NAME', {
+          font: font,
+          size: 0.6,
+          height: 0.15,
+          curveSegments: 12,
+          bevelEnabled: true,
+          bevelThickness: 0.02,
+          bevelSize: 0.02,
+          bevelSegments: 5
+      });
+      textGeo.center();
+      const material = new THREE.MeshStandardMaterial({ color:0x00c8ff, metalness:0.5, roughness:0.25 });
+      const mesh = new THREE.Mesh(textGeo, material);
+      mesh.position.y = 0.5;
+      scene.add(mesh);
+  });
+
+  /* ---------- Decorative rotating octahedrons ---------- */
+  const decoMat = new THREE.MeshStandardMaterial({ color:0xff4080, metalness:0.3, roughness:0.4 });
+  const octa1 = new THREE.Mesh(new THREE.OctahedronGeometry(0.3), decoMat);
+  const octa2 = octa1.clone();
+  octa1.position.set(-1.3, 1.1, 0);
+  octa2.position.set( 1.3,-0.8, 0);
+  scene.add(octa1, octa2);
+
+  /* ---------- Clickable résumé plane ---------- */
+  const planeGeo = new THREE.PlaneGeometry(1.5, 2);
+  const planeMat = new THREE.MeshBasicMaterial({ color:0xffffff, opacity:0.6, transparent:true });
+  const resumePlane = new THREE.Mesh(planeGeo, planeMat);
+  resumePlane.position.set(0,-1.1,0);
+  scene.add(resumePlane);
+
+  /* ---------- Interaction ---------- */
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+
+  const raycaster = new THREE.Raycaster();
+  const pointer   = new THREE.Vector2();
+  const tip       = document.getElementById('downloadTip');
+
+  function onPointerMove(e){
+      pointer.x = (e.clientX/innerWidth)*2 - 1;
+      pointer.y = -(e.clientY/innerHeight)*2 + 1;
+  }
+
+  function onClick(){
+      raycaster.setFromCamera(pointer, camera);
+      const hit = raycaster.intersectObject(resumePlane);
+      if(hit.length){
+          /* Replace with actual résumé file path */
+          window.open('PATH_TO_YOUR_RESUME/resume.pdf', '_blank');
+      }
+  }
+
+  window.addEventListener('pointermove', onPointerMove);
+  window.addEventListener('click',       onClick);
+
+  /* Show tooltip when hovering over résumé */
+  function updateTooltip(){
+      raycaster.setFromCamera(pointer, camera);
+      const hover = raycaster.intersectObject(resumePlane);
+      tip.classList.toggle('show', hover.length>0);
+  }
+
+  /* ---------- Render loop ---------- */
+  function animate(){
+      requestAnimationFrame(animate);
+      octa1.rotation.x += 0.01; octa1.rotation.y += 0.015;
+      octa2.rotation.x -= 0.015; octa2.rotation.y -= 0.01;
+      controls.update();
+      updateTooltip();
+      renderer.render(scene, camera);
+  }
+  animate();
+
+  /* ---------- Responsiveness ---------- */
+  window.addEventListener('resize', ()=>{
+      camera.aspect = innerWidth/innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(innerWidth, innerHeight);
+  });
+  </script>
 </body>
 </html>
