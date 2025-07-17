@@ -1,199 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Harshdeep Singh Parihar — Resume Tunnel</title>
-  <style>
-    html, body { margin:0; padding:0; height:100%; }
-    body {
-      overflow:hidden;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      background: #101010;
-      color: #f7f7f7;
-    }
-    #three-canvas {
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      display: block;
-      width: 100vw;
-      height: 100vh;
-    }
-    .content-overlay {
-      position: absolute;
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(16,16,16, 0.88);
-      border: 2px solid #e50914;
-      border-radius: 16px;
-      padding: 24px 40px;
-      z-index: 2;
-      min-width: 320px;
-      max-width: 640px;
-      box-shadow: 0 6px 24px #0008;
-      text-align: left;
-    }
-    .content-overlay h1 {
-      font-size: 2rem;
-      letter-spacing: 1px;
-      color: #e50914;
-      margin-bottom: .4em;
-    }
-    .content-overlay h2 {
-      margin-top: 1.6em;
-      margin-bottom: .3em;
-      color: #e50914;
-      text-transform: uppercase;
-      font-size: 1.15rem;
-    }
-    .content-overlay ul {
-      margin: 0 0 1em 1.2em;
-      padding: 0;
-      color: #fff;
-    }
-    .content-overlay .contact,
-    .content-overlay .location {
-      color: #fff;
-      opacity: .7;
-      font-size: .98em;
-      margin-bottom: 6px;
-    }
-    .content-overlay .skill {
-      background: #e50914;
-      color: #fff;
-      display: inline-block;
-      border-radius: 9px;
-      padding: 3px 18px 3px 11px;
-      margin: 0 8px 8px 0;
-      font-size: 0.93em;
-      line-height: 2.1em;
-      font-weight: bold;
-    }
-    @media (max-width:700px) {
-      .content-overlay { max-width:90vw;padding:18px 8px;}
-      .content-overlay h1{font-size:1.3rem;}
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Harshdeep Singh Parihar — 3-D Resume</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!-- Three.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.157/build/three.min.js"></script>
+<style>
+/* ---------- Reset & Globals ---------- */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:"Helvetica Neue",Arial,sans-serif;background:#101010;color:#f7f7f7;line-height:1.55;overflow:auto}
+a{color:#e50914;text-decoration:none}a:hover{text-decoration:underline}
+
+/* ---------- Layout ---------- */
+#bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0}
+main{position:relative;z-index:10;max-width:900px;width:90%;margin:auto;padding:60px 0}
+
+/* ---------- Typography ---------- */
+h1{font-size:2.6rem;font-weight:700;letter-spacing:.5px;color:#f7f7f7}
+h2{font-size:1.25rem;color:#7a7a7a;margin-top:6px}
+h3{font-size:1.1rem;color:#e50914;text-transform:uppercase;margin:40px 0 18px}
+h4{font-size:1rem;font-weight:600;margin-bottom:4px}
+.meta{font-size:.9rem;color:#7a7a7a;margin-bottom:8px}
+section:not(:last-of-type){border-bottom:1px solid #3a3a3a;padding-bottom:40px}
+
+/* ---------- Skills ---------- */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:10px}
+.skill{background:#7a7a7a;color:#101010;padding:6px 10px;border-radius:3px;font-size:.85rem;text-align:center;transition:.2s}
+.skill:hover{background:#e50914;color:#f7f7f7}
+
+/* ---------- Small Screens ---------- */
+@media(max-width:500px){main{padding:45px 0}h1{font-size:2rem}}
+</style>
 </head>
 <body>
-  <canvas id="three-canvas"></canvas>
-  <div class="content-overlay">
+<canvas id="bg"></canvas>
+
+<main>
+  <!-- ===== Header ===== -->
+  <header>
     <h1>Harshdeep Singh Parihar</h1>
-    <div class="contact">Software Engineer II &nbsp; | &nbsp; hdspgame@gmail.com &nbsp; | &nbsp; +91 9039133202</div>
-    <div class="location">Pune, INDIA</div>
+    <h2>Software Engineer II</h2>
+    <p class="meta">
+      Pune · <a href="mailto:hdspgame@gmail.com">hdspgame@gmail.com</a> · 
+      <a href="tel:+919039133202">+91 9039133202</a>
+    </p>
+  </header>
 
-    <h2>Work Experience</h2>
+  <!-- ===== Experience ===== -->
+  <section>
+    <h3>Experience</h3>
+
+    <article>
+      <h4>Software Engineer II &mdash; Bajaj Finserv Direct Ltd</h4>
+      <p class="meta">Aug 2022&nbsp;&ndash;&nbsp;Present · Pune</p>
+      <ul>
+        <li>Built REST micro-services for Smart Search (ElasticSearch).</li>
+        <li>On-boarded partners and delivered end-to-end flows.</li>
+        <li>Led solution design and resolved high-priority Jira bugs.</li>
+      </ul>
+    </article>
+
+    <article>
+      <h4>Programmer Analyst &mdash; Cognizant Technology</h4>
+      <p class="meta">Dec 2020&nbsp;&ndash;&nbsp;Aug 2022 · Pune</p>
+      <ul>
+        <li>Developed Java Spring-Boot APIs and micro-service features.</li>
+        <li>Implemented Smart Search endpoints backed by ElasticSearch.</li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- ===== Education ===== -->
+  <section>
+    <h3>Education</h3>
+    <p>
+      <strong>B.E. Computer Science &amp; Engineering</strong><br>
+      Mahakal Institute of Technology, Ujjain &nbsp;|&nbsp; 2016&nbsp;&ndash;&nbsp;2020
+    </p>
+  </section>
+
+  <!-- ===== Skills ===== -->
+  <section>
+    <h3>Skills</h3>
+    <div class="skills">
+      <span class="skill">Java 1.8</span><span class="skill">Spring Boot</span>
+      <span class="skill">REST APIs</span><span class="skill">Camunda BPMN</span>
+      <span class="skill">Microservices</span><span class="skill">JPA/Hibernate</span>
+      <span class="skill">MongoDB</span><span class="skill">PostgreSQL</span>
+      <span class="skill">HTML/CSS/JS</span><span class="skill">Docker</span>
+      <span class="skill">JIRA</span><span class="skill">Kibana</span>
+    </div>
+  </section>
+
+  <!-- ===== Projects ===== -->
+  <section>
+    <h3>Projects</h3>
+    <article>
+      <h4>Hybrid Development Environment (HDE)</h4>
+      <p class="meta">2017&nbsp;&ndash;&nbsp;2018</p>
+      <ul>
+        <li>Multi-language IDE enabling teachers to review student code.</li>
+        <li>Java Swing/AWT front-end, JDK 10.0.1 server back-end.</li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- ===== Achievements ===== -->
+  <section>
+    <h3>Achievements</h3>
     <ul>
-      <li><b>Software Engineer II</b>, Bajaj Finserv Direct Ltd (08/2022 - Present)<br>
-        - REST Microservices, Elastic Search, BPMN, Java</li>
-      <li><b>Programmer Analyst</b>, Cognizant Technology (12/2020 - 08/2022)<br>
-        - Java, Microservices, Bug Fixes, Jira</li>
+      <li>Lakshay Award&nbsp;2023 &mdash; company-sponsored Vietnam trip for exceptional performance.</li>
     </ul>
-    <h2>Education</h2>
-    <ul>
-      <li><b>Bachelor of Engineering</b>, Mahakal Institute of Technology (2016–2020)</li>
-    </ul>
-    <h2>Skills</h2>
-    <span class="skill">Java</span>
-    <span class="skill">Spring Boot</span>
-    <span class="skill">REST APIs</span>
-    <span class="skill">Microservices</span>
-    <span class="skill">HTML/CSS</span>
-    <span class="skill">Angular</span>
-    <span class="skill">JPA</span>
-    <span class="skill">MongoDB</span>
-    <span class="skill">PostgresDB</span>
-    <span class="skill">JIRA</span>
-    <span class="skill">Camunda BPMN</span>
-    <span class="skill">JavaScript</span>
-    <span class="skill">Debugging</span>
-    <span class="skill">Scrum</span>
+  </section>
 
-    <h2>Projects</h2>
-    <ul>
-      <li><b>Hybrid Development Environment</b> (2017–2018): Java, Swing, AWT — IDE for C/C++/Java, lab session management.</li>
-    </ul>
-    <h2>Achievements</h2>
-    <ul>
-      <li>Lakshay Award (2023): Vietnam trip for exemplary performance.</li>
-    </ul>
-    <h2>Languages & Interests</h2>
-    <ul>
-      <li>English (Professional)</li>
-      <li>PC Gaming, Movies</li>
-    </ul>
-  </div>
-  <!-- Three.js Tunnel Effect -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.155.0/examples/js/controls/OrbitControls.min.js"></script>
-  <script>
-    // Basic tunnel effect settings (black/white/red)
-    const canvas = document.getElementById('three-canvas');
-    const renderer = new THREE.WebGLRenderer({canvas, antialias:true});
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setClearColor(0x101010, 1);
+  <!-- ===== Footer ===== -->
+  <footer style="margin-top:50px;font-size:.8rem;color:#7a7a7a;text-align:center">
+    © 2025 Harshdeep Singh Parihar · Made with Three.js
+  </footer>
+</main>
 
-    const scene = new THREE.Scene();
+<!-- ---------- Three.js Tunnel Script ---------- -->
+<script>
+(() => {
+  const canvas = document.getElementById('bg');
+  const scene   = new THREE.Scene();
+  const camera  = new THREE.PerspectiveCamera(70, innerWidth/innerHeight, 0.1, 1000);
+  const renderer= new THREE.WebGLRenderer({canvas, antialias:true});
+  renderer.setPixelRatio(devicePixelRatio);
+  renderer.setSize(innerWidth, innerHeight);
+  renderer.setClearColor(0x000000, 1);
 
-    // Tunnel geometry: long cylinder, camera inside
-    const geometry = new THREE.CylinderGeometry(15, 15, 200, 50, 1, true); // open-ended
-    // Tunnel material: radial stripes pattern (black/white/red)
-    const tunnelMaterial = new THREE.MeshBasicMaterial({
-      color: 0xffffff,
-      side: THREE.BackSide,
-      wireframe: false
-    });
-    // Optional: create a custom stripe texture or gradients instead of just white
-    // We'll use a thin red stripe
-    const canvasTex = document.createElement('canvas');
-    canvasTex.width = 512;
-    canvasTex.height = 32;
-    const ctx = canvasTex.getContext('2d');
-    ctx.fillStyle = '#fff'; ctx.fillRect(0,0,512,32);
-    ctx.fillStyle = '#e50914'; ctx.fillRect(0,0,32,32); // left red stripe
-    ctx.fillRect(208,0,96,32); // mid red stripe
-    ctx.fillStyle = '#000'; ctx.fillRect(512-32,0,32,32); // black stripe
-    tunnelMaterial.map = new THREE.Texture(canvasTex);
-    tunnelMaterial.map.wrapS = THREE.RepeatWrapping;
-    tunnelMaterial.map.wrapT = THREE.RepeatWrapping;
-    tunnelMaterial.map.repeat.set(12,1);
-    tunnelMaterial.map.needsUpdate = true;
+  /* --- Tunnel Geometry --- */
+  const points = Array.from({length:101}, (_,i)=>new THREE.Vector3(0,0,i));
+  const curve  = new THREE.CatmullRomCurve3(points);
+  const tube   = new THREE.TubeGeometry(curve, 200, 4, 64, false);
+  const mat    = new THREE.MeshBasicMaterial({color:0x141414, side:THREE.BackSide});
+  scene.add(new THREE.Mesh(tube, mat));
 
-    const tunnel = new THREE.Mesh(geometry, tunnelMaterial);
-    scene.add(tunnel);
+  /* --- Red rings for motion cues (optional) --- */
+  const ringGeo = new THREE.TorusGeometry(3.8, 0.08, 8, 32);
+  const ringMat = new THREE.MeshBasicMaterial({color:0xe50914});
+  for(let z=0; z<=100; z+=5){
+    const ring=new THREE.Mesh(ringGeo, ringMat);
+    ring.rotation.x=Math.PI/2; ring.position.z=z; scene.add(ring);
+  }
 
-    const camera = new THREE.PerspectiveCamera(80, window.innerWidth/window.innerHeight, 0.1, 400);
-    camera.position.z = 90; // Start at one end of the tunnel
+  camera.position.z = 0;
+  const animate = () => {
+    requestAnimationFrame(animate);
+    camera.position.z += 0.5;          // fly forward
+    if (camera.position.z > 100) camera.position.z = 0;
+    renderer.render(scene, camera);
+  };
+  animate();
 
-    const controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.enablePan = false;
-    controls.enableZoom = false;
-    controls.enableDamping = true;
-
-    // Animate moving through the tunnel
-    let camZ = 90;
-    function animate() {
-      requestAnimationFrame(animate);
-
-      camZ -= .35;
-      if (camZ < -90) camZ = 90;
-      camera.position.z = camZ;
-      controls.update();
-
-      // Texture scrolling
-      tunnelMaterial.map.offset.y += 0.006;
-      renderer.render(scene, camera);
-    }
-    animate();
-
-    // Resize events
-    window.addEventListener('resize',()=>{
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-    });
-  </script>
+  /* --- Resize Handling --- */
+  addEventListener('resize', () => {
+    camera.aspect = innerWidth/innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(innerWidth, innerHeight);
+  });
+})();
+</script>
 </body>
 </html>
